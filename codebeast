@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+use EugeneZenko\CodeBeast;
+
+// check installation [composer default, composer bin, git clone]
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+    if (file_exists($file)) {
+        define('CODEBEAST_AUTOLOAD', $file);
+    }
+}
+unset($file);
+
+if (!defined('CODEBEAST_AUTOLOAD')) {
+    fwrite(STDERR,
+        'Please set up project dependencies using composer.' . PHP_EOL
+    );
+    exit(1);
+}
+
+require CODEBEAST_AUTOLOAD;
+
+$app = new CodeBeast\Console\Application\Setup();
+$app->run();

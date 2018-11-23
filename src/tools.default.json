@@ -1,0 +1,5 @@
+{
+  "lint" : "EugeneZenko\\CodeBeast\\Tools\\Lint\\Lint",
+  "phpcs" : "EugeneZenko\\CodeBeast\\Tools\\PHPCS\\PHPCS",
+  "md" : "EugeneZenko\\CodeBeast\\Tools\\MD\\MD"
+}

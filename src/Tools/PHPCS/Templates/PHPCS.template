@@ -1,0 +1,9 @@
+printf "${BLUE}Running Code Sniffer - Drupal...${NC}\n"
+%vendor%/bin/phpcs --standard=Drupal %extensions% %exclude% --encoding=utf-8 -n -p $FILES
+if [ $? != 0 ]
+then
+    printf "${BLUE}Do you want to run PHPCBF to automatically fix the issues? (y or n) ${NC}\n"
+    read  phpcbf </dev/tty
+    if [ "$phpcbf" == "y" ]
+    %action%
+fi

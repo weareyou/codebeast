@@ -1,0 +1,12 @@
+then
+    %vendor%/bin/phpcbf --standard=Drupal %extensions% %exclude% --encoding=utf-8 -n -p $FILES
+    %vendor%/bin/phpcs --standard=Drupal %extensions% %exclude% --encoding=utf-8 -n -p $FILES
+    if [ $? != 0 ]
+    then
+        continue_consent
+    else
+        printf "${GREEN}All is fixed!${NC}\n"
+    fi
+else
+    continue_consent
+fi

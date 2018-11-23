@@ -1,0 +1,37 @@
+#!/bin/bash
+continue_consent() {
+    printf "${BLUE}Do you want to force commit without fixing? (y or n) ${NC}\n"
+    read inp </dev/tty
+    if [ "$inp" != "y" ]
+    then
+        printf "${GREEN}Fix the error and commit again.${NC}\n"
+        exit 1
+    else
+        printf "${RED}I hope you know what you do... :(${NC}\n"
+    fi
+}
+
+# Colours list
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+printf "${BLUE}Starting pre-commit hook...${NC}\n"
+
+PROJECT=`php -r "echo dirname(dirname(dirname(realpath('$0'))));"`
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep -E \\\\%file_types%`
+
+# Determine if a file list is passed
+if [ "$#" -eq 1 ]
+then
+	oIFS=$IFS
+	IFS='
+	'
+	SFILES="$1"
+	IFS=$oIFS
+fi
+SFILES=${SFILES:-$STAGED_FILES_CMD}
+
+%tools%
+exit $?

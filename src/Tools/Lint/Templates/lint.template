@@ -1,0 +1,11 @@
+printf "${BLUE}Running PHP Lint...${NC}\n"
+for FILE in $SFILES
+do
+	php -l -d display_errors=0 $PROJECT/$FILE
+	%action%
+	FILES="$FILES $PROJECT/$FILE"
+	FILES_COMMA="$FILES_COMMA$PROJECT/$FILE,"
+done
+
+# Remove trailing comma character
+FILES_COMMA="${FILES_COMMA%"${FILES_COMMA##*[![:punct:]]}"}"

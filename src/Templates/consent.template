@@ -1,0 +1,4 @@
+if [ $? != 0 ]
+then
+    continue_consent
+fi
