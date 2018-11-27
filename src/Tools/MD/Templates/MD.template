@@ -1,3 +1,6 @@
 printf "${BLUE}Running PHPMD...${NC}\n"
-%vendor%/bin/phpmd $FILES_COMMA text %config% %exclude% %extensions%
-%action%
+if [ "$FILES_COMMA" ]
+then
+   %vendor%/bin/phpmd $FILES_COMMA text %config% %exclude% %extensions%
+   %action%
+fi
