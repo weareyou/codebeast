@@ -59,6 +59,9 @@ class Base
         if (!empty(trim($types))) {
             $types = explode(',', trim($types));
             $types = array_map('trim', $types);
+            foreach ($types as &$value) {
+                $value = '.' . $value;
+            }
             $types = implode("\\|\\", $types);
 
             $hook = file_get_contents(dirname(__FILE__) . '/../Templates/hook.template');
