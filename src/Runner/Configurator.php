@@ -81,9 +81,6 @@ class Configurator extends Runner
 
         $body = implode("\r\n", $parts);
         $this->hook = str_replace('%tools%', $body, $this->hook);
-
-        $vendor_path = $this->io->ask('  <info>Path to vendor folder</info> <comment>Skip trailing slash</comment> ', '');
-        $this->hook = str_replace('%vendor%', $vendor_path, $this->hook);
     }
 
     protected function writeConfig()
