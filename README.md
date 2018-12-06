@@ -18,3 +18,4 @@ Install command sets the path (absolute) to your vendor folder and creates pre-c
 
 ## Configuration
 Package is shipped with phpmd configuration in [minimal.xml](https://github.com/colours/codebeast/blob/master/src/Tools/MD/Config/minimal.xml) file. You can use your own phpmd config, by creating settings file according to [documentation](https://phpmd.org/documentation/creating-a-ruleset.html).
+Rest of the configuration is done as a part of the wizard process during 'configure' command execution.
