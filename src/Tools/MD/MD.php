@@ -40,7 +40,7 @@ class MD extends Base implements Tools {
 
         $config = $this->io->ask('  <info>Path to MD config (relative to project root)</info> <comment>Default is minimal.xml shipped with package</comment> ', '');
         if (empty(trim($config))) {
-            $config = dirname(__FILE__) . self::CONFIG_PATH;
+            $config = self::CONFIG_PATH;
         }
         $this->template = str_replace('%config%', $config, $this->template);
 
