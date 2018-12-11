@@ -13,7 +13,7 @@ use EugeneZenko\CodeBeast\Console\IO;
  */
 class MD extends Base implements Tools {
     const TEMPLATE_PATH = '/Templates/MD.template';
-    const CONFIG_PATH = '/Config/minimal.xml';
+    const CONFIG_PATH = '%vendor%/colours/codebeast/src/Tools/MD/Config/minimal.xml';
 
     protected $template;
 
@@ -38,7 +38,7 @@ class MD extends Base implements Tools {
             $this->template = str_replace('%exclude%', '', $this->template);
         }
 
-        $config = $this->io->ask('  <info>Path to MD config</info> <comment>Default is minimal.xml shipped with package</comment> ', '');
+        $config = $this->io->ask('  <info>Path to MD config (relative to project root)</info> <comment>Default is minimal.xml shipped with package</comment> ', '');
         if (empty(trim($config))) {
             $config = dirname(__FILE__) . self::CONFIG_PATH;
         }
