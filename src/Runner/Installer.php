@@ -45,8 +45,8 @@ class Installer extends Runner
         if (empty($directory)) {
             $dir = $this->io->ask('  <info>Path to .git folder</info>', 'Skip trailing slash');
             $dir = trim($dir);
-            if (!empty($dir)) {
-                $directory = is_dir($dir);
+            if (!empty($dir) && is_dir($dir)) {
+                $directory = $dir;
             }
         }
 
