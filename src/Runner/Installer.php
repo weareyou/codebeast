@@ -37,13 +37,13 @@ class Installer extends Runner
         }
 
         $hook = file_get_contents($path);
-        $vendor_path = $this->io->ask('  <info>Path to vendor folder</info> <comment>Skip trailing slash</comment> ', '');
+        $vendor_path = $this->io->ask('  <info>Absolute path to vendor folder</info> <comment>Skip trailing slash</comment> ', '');
         $hook = str_replace('%vendor%', $vendor_path, $hook);
 
         $directory = $this->detectGitFolder();
 
         if (empty($directory)) {
-            $dir = $this->io->ask('  <info>Path to .git folder</info>', 'Skip trailing slash');
+            $dir = $this->io->ask('  <info>Absolute path to .git folder</info>', 'Skip trailing slash');
             $dir = trim($dir);
             if (!empty($dir) && is_dir($dir)) {
                 $directory = $dir;
