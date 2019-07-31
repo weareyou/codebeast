@@ -6,6 +6,7 @@ then
         continue_consent
     else
         printf "${GREEN}All is fixed!${NC}\n"
+        git add -u
     fi
 else
     continue_consent
